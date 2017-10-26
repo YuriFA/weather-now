@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
-  constructor() {
-    super();
-    this.sate = {
-      data: null,
-    };
-  }
-  render() {
-    return (
-      <header>
-        <div className="units-selector">°C | °F</div>
-        <div className="language-selector">RU | EN</div>
-      </header>
-    );
-  }
-}
+import Logo from './Logo';
+import Selector from './Selector';
+
+const Header = () => (
+  <header>
+    <Logo />
+    <div className="settings-container">
+      <Selector className="units-selector" options={['°C', '°F']} />
+      <Selector className="language-selector" options={['RU', 'EN']} />
+    </div>
+  </header>
+);
 
 export default Header;

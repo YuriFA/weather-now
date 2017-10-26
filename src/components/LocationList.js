@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Location from './Location';
 
-class LocationList extends Component {
-  constructor() {
-    super();
-    this.sate = {
-      data: null,
-    };
-  }
-  render() {
-    return (
-      <div>
-        <h3>LocationList</h3>
-        <Location name="Moscow" />
-        <Location name="Paris" />
-        <Location name="Cheboksary" />
-        <Location name="London" />
-      </div>
-    );
-  }
-}
+const LocationList = ({ locations }) => (
+  <div className="location-list">
+    {Object.keys(locations).map(id => (
+      <Location
+        key={id}
+        {...locations[id]}
+      />
+    ))}
+  </div>
+);
 
-export default LocationList;
+const mapStateToProps = state => ({
+  locations: state
+});
+
+export default connect(mapStateToProps)(LocationList);

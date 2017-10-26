@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 
 const config = {
-  context: __dirname + '/src',
+  devtool: 'eval-source-map',
+  context: path.join(__dirname, '/src'),
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -11,21 +12,24 @@ const config = {
   devServer: {
     hot: true,
     inline: true,
-    contentBase: './public',
-    port: 3333
+    contentBase: path.resolve(__dirname, 'public'),
+    port: 3333,
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }
-    ]
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      }, {
+        test: /.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
 };
 
 module.exports = config;
