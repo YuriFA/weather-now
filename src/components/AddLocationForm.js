@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { addLocationAndFetchWeather } from './../actions';
@@ -16,16 +15,13 @@ const AddLocationForm = ({ dispatch }) => {
           return;
         }
         dispatch(addLocationAndFetchWeather(input.value));
+        input.value = '';
       }}
     >
-      <input type="text" placeholder="Location name" ref={(node) => { input = node; }} />
-      <button type="submit">Add Location</button>
+      <input type="text" className="add-location-input" placeholder="Location name" ref={(node) => { input = node; }} />
+      <button type="submit" className="add-location-button">Add Location</button>
     </form>
   );
-};
-
-AddLocationForm.PropTypes = {
-  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(AddLocationForm);

@@ -1,23 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import 'font-awesome/css/font-awesome.min.css';
 
 import App from './components/App';
-import locations from './reducers';
-import { getCurrentWeatherData } from './api/openWeatherMap';
-
+import configureStore from './configureStore';
 import './main.css';
 
-const store = createStore(
-  locations,
-  window.devToolsExtension && window.devToolsExtension(),
-  applyMiddleware(thunk)
-);
 
-// getCurrentWeatherData('Moscow')
-//   .catch(error => console.log(error.response.status));
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,14 +1,16 @@
+import { v4 } from 'uuid';
 import { getCurrentWeatherData } from './../api/openWeatherMap';
 
 export const ADD_LOCATION = 'ADD_LOCATION';
 export const REMOVE_LOCATION = 'REMOVE_LOCATION';
-export const REQUEST_WEATHER = 'REQUEST_WEATHER';
-export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
+export const FETCH_WEATHER_REQUEST = 'FETCH_WEATHER_REQUEST';
+export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS';
+export const FETCH_WEATHER_FAILURE = 'FETCH_WEATHER_FAILURE';
+export const SELECT_UNITS = 'SELECT_UNITS';
 
-let nextLocationId = 0;
 export const addLocation = name => ({
   type: ADD_LOCATION,
-  id: (nextLocationId++).toString(),
+  id: v4(),
   name,
 });
 
@@ -18,14 +20,19 @@ export const removeLocation = id => ({
 });
 
 export const requestWeather = id => ({
-  type: REQUEST_WEATHER,
+  type: FETCH_WEATHER_REQUEST,
   id
 });
 
 export const receiveWeather = (id, data) => ({
-  type: RECEIVE_WEATHER,
+  type: FETCH_WEATHER_SUCCESS,
   id,
   ...data
+});
+
+export const fetchWeatherError = id => ({
+  type: FETCH_WEATHER_FAILURE,
+  id
 });
 
 export const fetchWeather = (id) => {
@@ -37,8 +44,8 @@ export const fetchWeather = (id) => {
         dispatch(receiveWeather(id, data));
       })
       .catch((error) => {
-        console.log(error);
-        // TODO: dispatch failed request action
+        console.log('ERROR', error);
+        dispatch(fetchWeatherError(id));
       });
   };
 };
@@ -49,3 +56,9 @@ export const addLocationAndFetchWeather = (name) => {
     dispatch(fetchWeather(id));
   };
 };
+
+export const selectUnits = (id, units) => ({
+  type: SELECT_UNITS,
+  id,
+  units
+});

@@ -13,7 +13,7 @@ const config = {
     hot: true,
     inline: true,
     contentBase: path.resolve(__dirname, 'public'),
-    port: 3333,
+    port: 4444,
   },
   module: {
     rules: [
@@ -24,7 +24,10 @@ const config = {
       }, {
         test: /.css$/,
         use: ['style-loader', 'css-loader'],
-      },
+      }, {
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
+      }
     ],
   },
   plugins: [

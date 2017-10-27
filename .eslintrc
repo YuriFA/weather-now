@@ -13,15 +13,16 @@
     }
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "linebreak-style": ["error", "windows"],
     "no-unused-vars": "off",
     "no-underscore-dangle": [2, { "allowAfterThis": true }],
     "consistent-return": "off",
     "no-restricted-syntax": "warn",
-    "import/no-extraneous-dependencies": "off",
-    "linebreak-style": ["error", "windows"],
-    "comma-dangle": "off",
     "no-case-declarations": "off",
-    "no-plusplus": "warn"
+    "no-plusplus": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": "off"
   }
 }

@@ -1,11 +1,14 @@
 import {
   ADD_LOCATION, REMOVE_LOCATION,
-  REQUEST_WEATHER, RECEIVE_WEATHER
+  FETCH_WEATHER_REQUEST, FETCH_WEATHER_SUCCESS,
+  FETCH_WEATHER_FAILURE, SELECT_UNITS
 } from './../actions';
 
 const initialState = {
   temperature: 0,
-  isFetching: false
+  isFetching: false,
+  isFetchingError: false,
+  selectedUnits: 'celsius' // [celsius, fahrenheit]
 };
 
 const location = (state = initialState, action) => {
@@ -13,18 +16,32 @@ const location = (state = initialState, action) => {
     case ADD_LOCATION:
       return {
         ...state,
+        id: action.id,
         name: action.name,
       };
-    case REQUEST_WEATHER:
+    case FETCH_WEATHER_REQUEST:
       return {
         ...state,
         isFetching: true
       };
-    case RECEIVE_WEATHER:
+    case FETCH_WEATHER_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        ...action
+        ...action,
+        temperature: action[state.selectedUnits]
+      };
+    case FETCH_WEATHER_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        isFetchingError: true
+      };
+    case SELECT_UNITS:
+      return {
+        ...state,
+        selectedUnits: action.units,
+        temperature: state[action.units]
       };
     default:
       return state;
@@ -42,8 +59,10 @@ const locations = (state = {}, action) => {
       const copyState = Object.assign({}, state);
       delete copyState[action.id];
       return copyState;
-    case REQUEST_WEATHER:
-    case RECEIVE_WEATHER:
+    case FETCH_WEATHER_REQUEST:
+    case FETCH_WEATHER_SUCCESS:
+    case FETCH_WEATHER_FAILURE:
+    case SELECT_UNITS:
       return {
         ...state,
         [action.id]: location({ ...state[action.id] }, action)
