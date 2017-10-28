@@ -160,14 +160,14 @@ header {
   cursor: pointer;
   background: none;
   border: none;
-  opacity: 0;
+  opacity: 0.3;
   outline: none;
 }
 
-.location:hover .location-controls__button{
+/* .location:hover .location-controls__button{
   opacity: 0.5;
-}
+} */
 
-.location:hover .location-controls__button:hover {
+.location-controls__button:hover {
   opacity: 1;
 }

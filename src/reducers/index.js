@@ -1,7 +1,7 @@
 import {
   ADD_LOCATION, REMOVE_LOCATION,
   FETCH_WEATHER_REQUEST, FETCH_WEATHER_SUCCESS,
-  FETCH_WEATHER_FAILURE, SELECT_UNITS
+  FETCH_WEATHER_FAILURE, CHANGE_UNITS
 } from './../actions';
 
 const initialState = {
@@ -37,7 +37,7 @@ const location = (state = initialState, action) => {
         isFetching: false,
         isFetchingError: true
       };
-    case SELECT_UNITS:
+    case CHANGE_UNITS:
       return {
         ...state,
         selectedUnits: action.units,
@@ -62,7 +62,7 @@ const locations = (state = {}, action) => {
     case FETCH_WEATHER_REQUEST:
     case FETCH_WEATHER_SUCCESS:
     case FETCH_WEATHER_FAILURE:
-    case SELECT_UNITS:
+    case CHANGE_UNITS:
       return {
         ...state,
         [action.id]: location({ ...state[action.id] }, action)

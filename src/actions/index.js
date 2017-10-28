@@ -6,7 +6,7 @@ export const REMOVE_LOCATION = 'REMOVE_LOCATION';
 export const FETCH_WEATHER_REQUEST = 'FETCH_WEATHER_REQUEST';
 export const FETCH_WEATHER_SUCCESS = 'FETCH_WEATHER_SUCCESS';
 export const FETCH_WEATHER_FAILURE = 'FETCH_WEATHER_FAILURE';
-export const SELECT_UNITS = 'SELECT_UNITS';
+export const CHANGE_UNITS = 'CHANGE_UNITS';
 
 export const addLocation = name => ({
   type: ADD_LOCATION,
@@ -57,8 +57,15 @@ export const addLocationAndFetchWeather = (name) => {
   };
 };
 
+export const refreshAllLocations = () => {
+  return (dispatch, getState) => {
+    const locations = getState();
+    Object.keys(locations).map(id => dispatch(fetchWeather(id)));
+  };
+};
+
 export const selectUnits = (id, units) => ({
-  type: SELECT_UNITS,
+  type: CHANGE_UNITS,
   id,
   units
 });
