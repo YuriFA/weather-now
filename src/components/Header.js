@@ -7,7 +7,6 @@ const Header = () => (
   <header>
     <Logo />
     <div className="settings-container">
-      <Selector className="units-selector" options={['°C', '°F']} />
       <Selector className="language-selector" options={['RU', 'EN']} />
     </div>
   </header>

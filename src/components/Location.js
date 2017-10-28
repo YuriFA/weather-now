@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const Location = ({
   id,
@@ -33,8 +34,14 @@ const Location = ({
             <button className={`units-button ${selectedUnits === 'fahrenheit' ? 'units-button--active' : ''}`} onClick={() => onSelectUnitsClick(id, 'fahrenheit')}>°F</button>
           </div>
         </div>
-        <div className="humidity">Humidity: { humidity }%</div>
-        <div className="wind">Wind: { wind } m/s</div>
+        <div className="humidity">
+          <FormattedMessage id="app.weather.humidity" />
+          {`: ${humidity}%`}
+        </div>
+        <div className="wind">
+          <FormattedMessage id="app.weather.wind" />
+          {`: ${wind} m/s`}
+        </div>
       </div>
       <div className="location-controls">
         <button className="location-controls__button refresh-location" onClick={onRefreshClick}>

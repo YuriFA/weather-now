@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { removeLocation, fetchWeather, refreshAllLocations, selectUnits } from './../actions';
+import {
+  removeLocation, fetchWeather,
+  refreshAllLocations, selectUnits
+} from './../actions';
 import Location from './Location';
 
 class LocationList extends Component {
@@ -27,7 +30,7 @@ class LocationList extends Component {
 }
 
 const mapStateToProps = state => ({
-  locations: state
+  locations: state.locations
 });
 
 export default connect(

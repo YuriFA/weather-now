@@ -37,7 +37,7 @@ export const fetchWeatherError = id => ({
 
 export const fetchWeather = (id) => {
   return (dispatch, getState) => {
-    const location = getState()[id].name;
+    const location = getState().locations[id].name;
     dispatch(requestWeather(id));
     getCurrentWeatherData(location)
       .then((data) => {
@@ -59,7 +59,7 @@ export const addLocationAndFetchWeather = (name) => {
 
 export const refreshAllLocations = () => {
   return (dispatch, getState) => {
-    const locations = getState();
+    const { locations } = getState();
     Object.keys(locations).map(id => dispatch(fetchWeather(id)));
   };
 };
@@ -69,3 +69,17 @@ export const selectUnits = (id, units) => ({
   id,
   units
 });
+
+export const UPDATE_LOCALE = 'UPDATE_LOCALE';
+
+export const updateIntl = ({ locale, messages }) => ({
+  type: UPDATE_LOCALE,
+  payload: { locale, messages }
+});
+
+export const updateLocale = (locale = 'en') => {
+  return (dispatch) => {
+    const messages = require(`./../locales/${locale}.json`);
+    dispatch(updateIntl({ locale, messages }));
+  };
+};

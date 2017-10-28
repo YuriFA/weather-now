@@ -56,6 +56,10 @@ header {
   box-shadow: 1px 1px 6px 0 rgba(193, 107, 107, 0.15);
 }
 
+.add-location-button:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .weather-dashboard {
   padding-top: 20px;
   padding-left: 10px;
@@ -80,8 +84,9 @@ header {
   margin-right: 10px;
   margin-bottom: 10px;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   background: #fff;
+  color: #577293;
   box-shadow: 0px 5px 10px 4px rgba(192, 203, 210, 0.8);
 }
 
@@ -118,9 +123,10 @@ header {
   border: none;
   background: none;
   font-size: 1.1rem;
-  cursor: pointer;
-  opacity: 0.5;
+  color: #577293;
+  opacity: 0.3;
   outline: none;
+  cursor: pointer;
 }
 
 .units-button--active{
@@ -159,14 +165,11 @@ header {
   font-weight: bold;
   cursor: pointer;
   background: none;
+  color: #577293;
   border: none;
   opacity: 0.3;
   outline: none;
 }
-
-/* .location:hover .location-controls__button{
-  opacity: 0.5;
-} */
 
 .location-controls__button:hover {
   opacity: 1;
