@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { getCurrentWeatherData } from './../api/openWeatherMap';
+import { getCurrentWeather, getCurrentWeatherByGeo } from './../api/openWeatherMap';
 
 export const ADD_LOCATION = 'ADD_LOCATION';
 export const REMOVE_LOCATION = 'REMOVE_LOCATION';
@@ -40,7 +40,7 @@ export const fetchWeather = (id) => {
     const location = getState().locations[id].name;
     const lang = getState().intl.locale;
     dispatch(requestWeather(id));
-    getCurrentWeatherData({ location, lang })
+    getCurrentWeather({ location, lang })
       .then((data) => {
         dispatch(receiveWeather(id, data));
       })
@@ -55,6 +55,20 @@ export const addLocationAndFetchWeather = (name) => {
   return (dispatch) => {
     const { id } = dispatch(addLocation(name));
     dispatch(fetchWeather(id));
+  };
+};
+
+export const fetchWeatherByGeoAndAddLocation = ({ lat, lon }) => {
+  return (dispatch, getState) => {
+    const lang = getState().intl.locale;
+    getCurrentWeatherByGeo({ lat, lon, lang })
+      .then((data) => {
+        const { id } = dispatch(addLocation(data.name));
+        dispatch(receiveWeather(id, data));
+      })
+      .catch((error) => {
+        // dispatch(fet)
+      });
   };
 };
 

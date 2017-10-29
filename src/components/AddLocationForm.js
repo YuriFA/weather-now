@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
 import { addLocationAndFetchWeather } from './../actions';
 
-const AddLocationForm = ({ dispatch }) => {
+const AddLocationForm = ({ dispatch, intl }) => {
   let input;
 
   return (
@@ -19,7 +19,12 @@ const AddLocationForm = ({ dispatch }) => {
         input.value = '';
       }}
     >
-      <input type="text" className="add-location-input" placeholder="Location name" ref={(node) => { input = node; }} />
+      <input
+        type="text"
+        className="add-location-input"
+        placeholder={intl.formatMessage({ id: 'app.location.locationName' })}
+        ref={(node) => { input = node; }}
+      />
       <button type="submit" className="add-location-button">
         <FormattedMessage id="app.location.addLocation" />
       </button>
@@ -27,4 +32,4 @@ const AddLocationForm = ({ dispatch }) => {
   );
 };
 
-export default connect()(AddLocationForm);
+export default connect()(injectIntl(AddLocationForm));

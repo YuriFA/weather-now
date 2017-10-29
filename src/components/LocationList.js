@@ -7,27 +7,24 @@ import {
 } from './../actions';
 import Location from './Location';
 
-class LocationList extends Component {
-  componentDidMount() {
-    this.props.refreshAllLocations();
-  }
-
-  render() {
-    return (
-      <div className="location-list">
-        {Object.keys(this.props.locations).map(id => (
-          <Location
-            key={id}
-            {...this.props.locations[id]}
-            onRemoveClick={() => this.props.onRemoveLocationClick(id)}
-            onRefreshClick={() => this.props.onRefreshLocationClick(id)}
-            onSelectUnitsClick={this.props.onSelectUnitsClick}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+const LocationList = ({
+  locations,
+  onRemoveLocationClick,
+  onRefreshLocationClick,
+  onSelectUnitsClick
+}) => (
+  <div className="location-list">
+    {Object.keys(locations).map(id => (
+      <Location
+        key={id}
+        {...locations[id]}
+        onRemoveClick={() => onRemoveLocationClick(id)}
+        onRefreshClick={() => onRefreshLocationClick(id)}
+        onSelectUnitsClick={onSelectUnitsClick}
+      />
+    ))}
+  </div>
+);
 
 const mapStateToProps = state => ({
   locations: state.locations

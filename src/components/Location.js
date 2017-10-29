@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 
 const Location = ({
   id,
@@ -13,19 +13,20 @@ const Location = ({
   selectedUnits,
   onRemoveClick,
   onRefreshClick,
-  onSelectUnitsClick
+  onSelectUnitsClick,
+  intl
 }) => (
   <div className="location">
     <div className="location__name">
-      <span className="location__city">{ name }</span>
-      <span className="location__country">{ country ? `, ${country.toUpperCase()}` : '' }</span>
+      <span className="location__city">{name}</span>
+      <span className="location__country">{country ? `, ${country.toUpperCase()}` : ''}</span>
     </div>
     <div className="weather">
       <div className="weather__icon">
         <img src={iconUrl} alt={description} title={description} />
       </div>
       <div className="temperature">
-        <div className="temperature__value">{ temperature }</div>
+        <div className="temperature__value">{temperature}</div>
         <div className="temperature__units">
           <button className={`units-button ${selectedUnits === 'celsius' ? 'units-button--active' : ''}`} onClick={() => onSelectUnitsClick(id, 'celsius')}>°C</button>
           {' | '}
@@ -46,14 +47,14 @@ const Location = ({
       </div>
     </div>
     <div className="location-controls">
-      <button className="location-controls__button refresh-location" title="refresh" onClick={onRefreshClick}>
+      <button className="location-controls__button refresh-location" title={intl.formatMessage({ id: 'app.title.refresh' })} onClick={onRefreshClick}>
         <i className="fa fa-refresh" aria-hidden="true"></i>
       </button>
-      <button className="location-controls__button remove-location" title="remove" onClick={onRemoveClick}>
+      <button className="location-controls__button remove-location" title={intl.formatMessage({ id: 'app.title.remove' })} onClick={onRemoveClick}>
         <i className="fa fa-times" aria-hidden="true"></i>
       </button>
     </div>
   </div>
 );
 
-export default Location;
+export default injectIntl(Location);
