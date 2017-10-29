@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import Logo from './Logo';
-import Selector from './Selector';
+import SwitchLocale from './SwitchLocale';
 
 const Header = () => (
   <header>
     <Logo />
     <div className="settings-container">
-      <Selector className="language-selector" options={['RU', 'EN']} />
+      <SwitchLocale className="language-selector" />
     </div>
   </header>
 );

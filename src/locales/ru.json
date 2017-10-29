@@ -1,8 +1,9 @@
 {
-  "app.location.addLocation": "добавить город",
-  "app.location.locationName": "название города",
-  "app.weather.humidity": "влажность",
-  "app.weather.wind": "ветер",
-  "app.title.refresh": "обновить",
-  "app.title.remove": "удалить"
+  "app.location.addLocation": "Добавить город",
+  "app.location.locationName": "Название города",
+  "app.weather.humidity": "Влажность",
+  "app.weather.wind": "Ветер",
+  "app.weather.wind.units": "м/с",
+  "app.title.refresh": "Обновить",
+  "app.title.remove": "Удалить"
 }

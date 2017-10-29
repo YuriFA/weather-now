@@ -3,6 +3,7 @@
   "app.location.locationName": "City name",
   "app.weather.humidity": "Humidity",
   "app.weather.wind": "Wind",
+  "app.weather.wind.units": "m/s",
   "app.title.refresh": "Refresh",
   "app.title.remove": "Remove"
 }

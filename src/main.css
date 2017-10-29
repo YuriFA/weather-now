@@ -24,8 +24,14 @@ header {
   pointer-events: none;
 }
 
-.units-selector {
+.language-selector {
   margin-right: 20px;
+  padding: 3px 5px;
+  border: none;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #577293;
 }
 
 .add-location-form {
@@ -87,7 +93,7 @@ header {
   border-radius: 10px;
   background: #fff;
   color: #577293;
-  box-shadow: 0px 5px 10px 4px rgba(192, 203, 210, 0.8);
+  box-shadow: 0px 3px 10px 4px rgba(192, 203, 210, 0.8);
 }
 
 .location__name {
@@ -138,12 +144,14 @@ header {
   opacity: 1;
 }
 
-.humidity {
-  margin-top: 10px;
-  flex: 1 1 100%;
+.description {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: 1.3rem;
+  text-transform: capitalize;
 }
 
-.wind {
+.full-row {
   flex: 1 1 100%;
 }
 
