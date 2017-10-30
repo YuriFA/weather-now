@@ -6,8 +6,8 @@ import rootReducer from './reducers';
 import { loadState, saveState } from './storage/localStorage';
 import { getCurrentWeatherData } from './api/openWeatherMap';
 
-const configureStore = () => {
-  const persistedState = loadState();
+const configureStore = (preloadedState) => {
+  const persistedState = loadState() || preloadedState;
   const store = createStore(
     rootReducer,
     persistedState,

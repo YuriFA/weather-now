@@ -3,8 +3,10 @@ import path from 'path';
 import Express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import rootReducer from './src/reducers';
 
 import Root from './src/components/Root';
 
@@ -17,7 +19,7 @@ app.use(handleRender);
 
 
 function handleRender(req, res) {
-  const store = createStore();
+  const store = createStore(rootReducer, applyMiddleware(thunk));
 
   const html = renderToString(
     <Root store={store} />

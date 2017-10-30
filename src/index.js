@@ -18,7 +18,10 @@ import getCurrentLocation from './api/geolocation';
 import { isEmptyObj } from './utils';
 import './main.css';
 
-const store = configureStore();
+const preloadedState = window.__PRELOADED_STATE__; // eslint-disable-line no-underscore-dangle
+delete window.__PRELOADED_STATE__; // eslint-disable-line no-underscore-dangle
+
+const store = configureStore(preloadedState);
 
 // setting up locales
 addLocaleData(en);
