@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import Header from './Header';
 import WeatherDashboard from './WeatherDashboard';
-import AddLocationForm from './AddLocationForm';
+import DashboardControls from './DashboardControls';
 
 const App = () => (
   <div>
     <Header />
-    <AddLocationForm />
+    <DashboardControls />
     <WeatherDashboard />
   </div>
 );

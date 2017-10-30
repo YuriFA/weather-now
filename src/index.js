@@ -11,7 +11,7 @@ import {
   updateLocales,
   updateIntl,
   refreshAllLocations,
-  fetchWeatherByGeoAndAddLocation
+  addLocationByGeo
 } from './actions';
 import { translationMessages, DEFAULT_LOCALE } from './locales';
 import getCurrentLocation from './api/geolocation';
@@ -39,10 +39,7 @@ store.dispatch(updateIntl({
 // refresh weather data from localStorage after reload
 const { locations } = store.getState();
 if (isEmptyObj(locations)) {
-  getCurrentLocation((position) => {
-    const { latitude: lat, longitude: lon } = position.coords;
-    store.dispatch(fetchWeatherByGeoAndAddLocation({ lat, lon }));
-  });
+  store.dispatch(addLocationByGeo());
 } else {
   store.dispatch(refreshAllLocations());
 }

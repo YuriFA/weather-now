@@ -1,5 +1,6 @@
 import { v4 } from 'uuid';
 import { getCurrentWeather, getCurrentWeatherByGeo } from './../api/openWeatherMap';
+import getCurrentLocation from './../api/geolocation';
 
 export const ADD_LOCATION = 'ADD_LOCATION';
 export const REMOVE_LOCATION = 'REMOVE_LOCATION';
@@ -68,6 +69,19 @@ export const fetchWeatherByGeoAndAddLocation = ({ lat, lon }) => {
       })
       .catch((error) => {
         // dispatch(fet)
+      });
+  };
+};
+
+export const addLocationByGeo = () => {
+  return (dispatch, getState) => {
+    getCurrentLocation()
+      .then((position) => {
+        const { latitude: lat, longitude: lon } = position.coords;
+        dispatch(fetchWeatherByGeoAndAddLocation({ lat, lon }));
+      })
+      .catch((error) => {
+        // console.log
       });
   };
 };

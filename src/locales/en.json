@@ -4,6 +4,8 @@
   "app.weather.humidity": "Humidity",
   "app.weather.wind": "Wind",
   "app.weather.wind.units": "m/s",
+  "app.dashboard.updateAll": "Update All",
+  "app.dashboard.addYourLocation": "Add your location",
   "app.title.refresh": "Refresh",
   "app.title.remove": "Remove"
 }

@@ -4,6 +4,8 @@
   "app.weather.humidity": "Влажность",
   "app.weather.wind": "Ветер",
   "app.weather.wind.units": "м/с",
+  "app.dashboard.updateAll": "Обновить все",
+  "app.dashboard.addYourLocation": "Добавить ваше местонахождение",
   "app.title.refresh": "Обновить",
   "app.title.remove": "Удалить"
 }

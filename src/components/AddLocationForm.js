@@ -25,7 +25,7 @@ const AddLocationForm = ({ dispatch, intl }) => {
         placeholder={intl.formatMessage({ id: 'app.location.locationName' })}
         ref={(node) => { input = node; }}
       />
-      <button type="submit" className="add-location-button">
+      <button type="submit" className="dashboard-contorls-button add-location-button">
         <FormattedMessage id="app.location.addLocation" />
       </button>
     </form>

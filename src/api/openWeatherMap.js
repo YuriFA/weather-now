@@ -7,6 +7,7 @@ const celsiusToFahrenheit = temp => Math.round((temp * 1.8) + 32);
 
 const formatWeatherData = (res) => {
   const { data } = res;
+  console.log('Fetching', data);
   const celsiusTemp = Math.round(data.main.temp);
   return {
     celsius: celsiusTemp,

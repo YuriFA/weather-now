@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {
-  removeLocation, fetchWeather,
-  refreshAllLocations, selectUnits
-} from './../actions';
+import { removeLocation, fetchWeather, selectUnits } from './../actions';
 import Location from './Location';
 
 const LocationList = ({
@@ -35,7 +32,6 @@ export default connect(
   {
     onRemoveLocationClick: removeLocation,
     onRefreshLocationClick: fetchWeather,
-    onSelectUnitsClick: selectUnits,
-    refreshAllLocations
+    onSelectUnitsClick: selectUnits
   }
 )(LocationList);

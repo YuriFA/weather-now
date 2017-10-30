@@ -34,12 +34,21 @@ header {
   color: #577293;
 }
 
-.add-location-form {
+.dashboard-contorls {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   flex-wrap: wrap;
   padding-top: 20px;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.add-location-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  margin-right: 20px;
 }
 
 .add-location-input {
@@ -51,7 +60,7 @@ header {
   margin-right: 15px;
 }
 
-.add-location-button {
+.dashboard-contorls-button {
   padding: 10px 15px;
   height: 40px;
   border: none;
@@ -62,8 +71,12 @@ header {
   box-shadow: 1px 1px 6px 0 rgba(193, 107, 107, 0.15);
 }
 
-.add-location-button:hover {
+.dashboard-contorls-button:hover {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.update-all-button {
+  margin-right: 20px;
 }
 
 .weather-dashboard {
