@@ -5,7 +5,6 @@ const getCurrentLocation = () => {
     }
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
-  // navigator.geolocation.getCurrentPosition(successCallback);
 };
 
 export default getCurrentLocation;
