@@ -12,6 +12,5 @@ function onGeoSuccess(position) {
   root.innerHTML = 'Coords: ' + position.coords.latitude + ', ' + position.coords.longitude;
 }
 
-window.onload(function(e) {
-  getCurrentLocation(onGeoSuccess);
-});
+
+getCurrentLocation(onGeoSuccess);
