@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import ru from 'react-intl/locale-data/ru';
 import 'font-awesome/css/font-awesome.min.css';
 
-import App from './components/App';
-import LanguageProvider from './components/LanguageProvider';
+import Root from './components/Root';
 import configureStore from './configureStore';
 import {
   updateLocales,
@@ -47,10 +45,6 @@ if (isEmptyObj(locations)) {
 }
 
 ReactDOM.render(
-  <Provider store={store}>
-    <LanguageProvider>
-      <App />
-    </LanguageProvider>
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('root'),
 );
